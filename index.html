@@ -21,8 +21,8 @@
   <meta name="twitter:image:alt" content="SolidCraft: open-source parametric CAD built in Rust">
   
 <script type="module">
-import init, * as bindings from './solidcraft-web-5322dec5bacb0ac9.js';
-const wasm = await init({ module_or_path: './solidcraft-web-5322dec5bacb0ac9_bg.wasm' });
+import init, * as bindings from './solidcraft-web-6ac3986abe2d3176.js';
+const wasm = await init({ module_or_path: './solidcraft-web-6ac3986abe2d3176_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -33,15 +33,16 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 </script>
   
   
-  <style>
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #e8ebf0; }
-    #solidcraft_canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    #solidcraft_loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #4a5060; font: 14px system-ui, sans-serif; pointer-events: none; }
-  </style>
-<link rel="modulepreload" href="./solidcraft-web-5322dec5bacb0ac9.js" crossorigin="anonymous" integrity="sha384-eWSKSWdL81Kxbrpg65uJoNAwZlYM0fAFyMicCGXQDlhQMmeTwDNArNivMaX5BFLU"><link rel="preload" href="./solidcraft-web-5322dec5bacb0ac9_bg.wasm" crossorigin="anonymous" integrity="sha384-J9j4G1/gb18t+8dLWkRwa6uU3RIENUtZWSb6gIIgkbKnW0q6iRiRMZCs+xkjOwwH" as="fetch" type="application/wasm"></head>
+  <link rel="stylesheet" href="./loading-e63241c70e2928c4.css" integrity="sha384-CWuyjDSPfUzmFqriX0uMiBCpgW1Qznx7zYh1Ploq6XZ1b+dW70Ce7mm90M22UGs9"/>
+<link rel="modulepreload" href="./solidcraft-web-6ac3986abe2d3176.js" crossorigin="anonymous" integrity="sha384-QyhMlEr2FGRgCiVbCSTh8YuBzVl2RxVUspzWciAtPDdctVOIGAalaHWAe4+u7tGc"><link rel="preload" href="./solidcraft-web-6ac3986abe2d3176_bg.wasm" crossorigin="anonymous" integrity="sha384-b1C91jYai2aETzktIm6p5vcZWxeEuq2trgBP9UCEH27h6kOTWSNBr4MiGaMzpC2X" as="fetch" type="application/wasm"></head>
 <body>
   <canvas id="solidcraft_canvas"></canvas>
   <div id="solidcraft_loading">Loading SolidCraft&hellip;</div>
+  <script>
+    // Offline use and updates (sw.js; written into release builds by `cargo xtask web-offline`).
+    if ("serviceWorker" in navigator) {
+      addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    }
+  </script>
 </body>
 </html>
